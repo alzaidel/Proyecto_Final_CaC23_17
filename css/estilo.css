@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1px;
+    text-align: center;
+    grid-template-areas:
+        "header"
+        "consola"
+        "navbar"
+        "article"
+        "aside"
+        "footer";
+}
+
+.header {
+    grid-area: header;
+    background-image: url("para banner.jpg");
+}
+
+.consola {
+    grid-area: consola;
+    background-color: beige;
+}
+
+.navbar {
+    grid-area: navbar;
+    background-color: cornflowerblue;
+}
+
+.aside {
+    grid-area: aside;
+    background-color: darkkhaki;
+    
+}
+
+.article {
+    grid-area: article;
+    background-color: darkorange;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: dimgray;
+}
+
+@media(min-width:900px) {
+    .grid-container {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: auto;
+        grid-template:
+            "navbar header header" 100px
+            "aside article article"
+            "footer footer footer" 100px/
+            200px auto;
+    }
+}
+
+.header {
+    width: 100%;
+    height: 100%;
+    animation-name: cambiarcolor1;
+    animation-name: aparecer;
+    animation-duration: 3s;
+    animation-iteration-count: 2;
+}
+
+@keyframes cambiarcolor1 {
+    0% {
+        background-color: bisque;
+    }
+
+    50% {
+        background-color: aquamarine;
+    }
+
+    100% {
+        background-color: white;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        rotate: 45deg;
+    }
+}
+
+.article {
+    height: 100%;
+    width: 100%;
+}
+
+.navbar {
+    margin-top: 0;
+    margin-left: 0;
+    background: rgb(255, 0, 212);
+    color: white;
+    height: 100%;
+    width: 100%;
+    animation-name: cambiarColor;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes cambiarColor {
+    0% {
+        background-color: darkgreen;
+        transform: scale(1);
+        transform: translate(500px);
+    }
+
+    50% {
+        background-color: rgb(238, 234, 12);
+    }
+
+    100% {
+        background: red;
+        }
+}
+
+.aside {
+    margin-top: 0;
+    margin-left: 0;
+    height: auto;
+    width: auto;
+    animation-name: expandir;
+    animation-duration: 3.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes expandir {
+    0% {
+        transform: scale(2);
+
+    }
+}
