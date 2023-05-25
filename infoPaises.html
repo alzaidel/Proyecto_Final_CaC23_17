@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Información de Países</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .country-image {
+      height: 200px;x
+    }
+  </style>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/estilo.css">
+   <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+ </head>
+<body>
+  <h1>Información de Países</h1>
+  
+  <!-- Select para elegir una región -->
+  <select id="region-select" onchange="filterCountries()">
+    <option value="">Seleccione una región</option>
+    <option value="Americas">Américas</option>
+    <option value="Europe">Europa</option>
+    <option value="Africa">África</option>
+    <option value="Asia">Asia</option>
+    <option value="Oceania">Oceanía</option>
+  </select>
+  
+  <!-- Select para elegir un país -->
+  <select id="country-select" onchange="getCountryInfo(this.value)">
+    <option value="">Seleccione un país</option>
+  </select>
+
+  <!-- Div para mostrar los detalles del país seleccionado -->
+  <div id="country-details"></div>
+
+  <script>
+    // Obtener la lista de países al cargar la página
+    $(document).ready(function() {
+      $.ajax({
+        url: 'https://restcountries.com/v3.1/all',
+        method: 'GET',
+        success: function(data) {
+          var select = $('#country-select');
+          $.each(data, function(index, country) {
+            select.append($('<option></option>').val(country.name.common).text(country.translations.spa.common));
+          });
+
+          // Ordenar la lista desplegable alfabéticamente
+          select.html(select.find('option').sort(function(a, b) {
+            return a.text.toUpperCase().localeCompare(b.text.toUpperCase());
+          }));
+        },
+        error: function() {
+          alert('Error al cargar la lista de países');
+        }
+      });
+    });
+
+    // Filtrar países según la región seleccionada
+    function filterCountries() {
+      var region = $('#region-select').val();
+      var countrySelect = $('#country-select');
+      countrySelect.empty();
+
+      if (region) {
+        $.ajax({
+          url: 'https://restcountries.com/v3.1/region/' + region,
+          method: 'GET',
+          success: function(data) {
+            var select = $('#country-select');
+            select.append($('<option></option>').val('').text('Seleccione un país'));
+            $.each(data, function(index, country) {
+              select.append($('<option></option>').val(country.name.common).text(country.translations.spa.common));
+            });
+
+            // Ordenar la lista desplegable alfabéticamente
+            select.html(select.find('option').sort(function(a, b) {
+              return a.text.toUpperCase().localeCompare(b.text.toUpperCase());
+            }));
+          },
+          error: function() {
+            alert('Error al obtener la lista de países por región');
+          }
+        });
+      }
+    }
+
+    // Obtener la información del país seleccionado
+    function getCountryInfo(countryName) {
+    //   if (countryName) {
+      if (countryName) {
+        $.ajax({
+          url: 'https://restcountries.com/v3.1/name/' + countryName + '?fullText=true',
+          method: 'GET',
+          success: function(data) {
+            var country = data[0];
+
+            var countryDetails = $('#country-details');
+            countryDetails.empty();
+            countryDetails.append('<h2>' + country.translations.spa.common + '</h2>');
+            countryDetails.append('<p><strong>Nombre oficial:</strong> ' + country.translations.spa.official + '</p>');
+            countryDetails.append('<p><strong>Región:</strong> ' + country.region + '</p>');
+            countryDetails.append('<p><strong>Sub región:</strong> ' + country.subregion + '</p>');
+            countryDetails.append('<p><strong>Capital:</strong> ' + country.capital + '</p>');
+            countryDetails.append('<p><strong>Códigos Monedas:</strong> ' + Object.keys(country.currencies) + '</p>');
+            // countryDetails.append('<p><strong>Monedas:</strong> ' + country.currencies.name + '</p>');
+            // Recorro todos los valores de las monedas 
+           /*  var currenciesNames = Object.values(country.currencies);
+            var currenciesString = currenciesNames.join(', ');
+            countryDetails.append('<p><strong>Monedas:</strong> ' + currenciesString + '</p>');
+             */
+            //countryDetails.append('<p><strong>Idiomas:</strong> ' + Object.keys(country.languages) + '</p>');
+            // Recorro todos los valores de los idiomas 
+            var languageNames = Object.values(country.languages);
+            var languagesString = languageNames.join(', ');
+            countryDetails.append('<p><strong>Idiomas:</strong> ' + languagesString + '</p>');
+            
+            countryDetails.append('<p><strong>Gentilicio:</strong> ' + country.demonyms.eng.m + '</p>');
+             
+            // Agregar la imagen de la bandera
+            var flagUrl = country.flags.png;
+            countryDetails.append('<img src="' + flagUrl + '" alt="Bandera de ' + country.translations.spa.common + '" class="country-image">');
+            // Agregar la imagen del escudo
+            var flagUrl = country.coatOfArms.png;
+            countryDetails.append('<img src="' + flagUrl + '" alt="Escudo de ' + country.translations.spa.common + '" class="country-image">');
+          
+          },
+          error: function() {
+            alert('Error al obtener la información del país');
+          }
+        });
+      } else {
+        $('#country-details').empty();
+      }
+    }
+  </script>
+</body>
+</html>
