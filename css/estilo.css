@@ -150,3 +150,42 @@ body {
 
     }
 }
+
+
+.carousel-frame {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+
+}
+
+.carousel-frame ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+
+    animation: slide 20s infinite linear;
+}
+
+.carousel-frame li {
+    list-style: none;
+    width: 100%;
+}
+
+.carousel-frame img {
+    width: 100%;
+}
+
+@keyframes slide {
+    0% {margin-left: 0%;}
+    20% {margin-left: 0%;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    95% {margin-left: -300%;}
+}
