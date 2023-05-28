@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Inscripcion</title>
+
+  
+    <script>
+        function habilitarClase() {
+        var checkbox = document.getElementById("checkboxClase");
+        var seccionClase = document.getElementById("seccionClase");
+
+        if (checkbox.checked) {
+            seccionClase.style.display = "block";
+        } else {
+            seccionClase.style.display = "none";
+        }
+        }
+
+        function validarFormulario() {
+        var contraseña = document.getElementById("contraseña");
+        var confirmarContraseña = document.getElementById("confirmarContraseña");
+
+        if (contraseña.value != confirmarContraseña.value) {
+            alert("Las contraseñas no coinciden. Por favor, inténtalo nuevamente.");
+            return false;
+        }
+        }
+
+        function enviarFormulario() {
+        var email = document.getElementById("email").value;
+        var materia = document.getElementById("materias").value;
+        var fecha = document.getElementById("fecha").value;
+
+        alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha);
+        }
+    </script>
+</head>
+<body>
+  <h2>Formulario</h2>
+  <form onsubmit="return validarFormulario()">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" required><br>
+
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" required><br>
+
+    <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" required><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required><br>
+
+    <label for="contraseña">Contraseña:</label>
+    <input type="password" id="contraseña" required><br>
+
+    <label for="confirmarContraseña">Confirmar Contraseña:</label>
+    <input type="password" id="confirmarContraseña" required><br>
+
+    <label for="checkboxClase">Agendar una clase:</label>
+    <input type="checkbox" id="checkboxClase" onchange="habilitarClase()"><br>
+
+    <div id="seccionClase" style="display: none;">
+      <label for="materias">Materias:</label>
+      <select id="materias">
+        <option value="Matemática">Matemática</option>
+        <option value="Lengua">Lengua</option>
+        <option value="Geografía">Geografía</option>
+        <option value="Física">Física</option>
+        <option value="Química">Química</option>
+        <option value="Inglés">Inglés</option>
+        <option value="Historia">Historia</option>
+      </select><br>
+
+      <label for="fecha">Fecha:</label>
+      <input type="datetime-local" id="fecha" min="" max="" required><br>
+      <!-- El atributo min y max pueden ser modificados dinámicamente a través de JavaScript para limitar la fecha y hora permitidas. -->
+    </div>
+
+    <input type="submit" value="Enviar" onclick="enviarFormulario()">
+  </form>
+</body>
+</html>
