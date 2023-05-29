@@ -147,6 +147,7 @@ body {
     width: 100%;
 }
 .navbar {
+    padding-left: 8px;
     margin-top: 0;
     margin-left: 0;
     background: rgb(240, 241, 132);
@@ -156,7 +157,7 @@ body {
     animation-name: cambiarColor;
     animation-duration: 5s;
     animation-iteration-count: 1;
-
+    text-align: left;
 }
 
 @keyframes cambiarColor {
