@@ -84,7 +84,7 @@ body {
         grid-template-areas: auto;
         grid-template:
             "navbar header header" 100px
-            "aside article article"
+            "aside aside article"
             "footer footer footer" 100px/
             200px auto;
     }
