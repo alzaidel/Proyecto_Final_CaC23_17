@@ -62,6 +62,12 @@ body {
     grid-area: article;
     
 }
+
+.jitsi {
+    grid-area: article;
+    text-align: left;
+}
+
 .footer {
     grid-area: footer;
     background-color: dimgray;
