@@ -54,7 +54,7 @@ body {
 
 .article {
     grid-area: article;
-    background-color: darkorange;
+    background-color: rgb(227, 237, 241);
 }
 
 .api {
@@ -148,17 +148,17 @@ body {
 
 @keyframes cambiarColor {
     0% {
-        background-color: darkgreen;
+        background-color: rgb(7, 226, 7);
         transform: scale(1);
         transform: translate(500px);
     }
 
     50% {
-        background-color: rgb(238, 234, 12);
+        background-color: rgb(168, 240, 109);
     }
 
     100% {
-        background: red;
+        background: rgb(150, 199, 121);
         }
 }
 
