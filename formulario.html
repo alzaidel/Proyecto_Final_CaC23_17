@@ -32,7 +32,19 @@
             return false;
         }
         }
-    
+        
+        // Generar sala aleatoria
+        function generarSalaRandom() {
+
+        // Se genera una sala al azar con 8 caracteres alfanuméricos
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let sala = '';
+        for (let i = 0; i < 8; i++) {
+            sala += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return sala;
+        }
+
         function enviarFormulario() {
         var checkbox = document.getElementById("checkboxClase");
         var email = document.getElementById("email").value;
@@ -41,7 +53,8 @@
     
         if (validarPassword() == undefined) {
             if (checkbox.checked) {
-                alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha); 
+                
+                alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha + " --- Número de sala: " + generarSalaRandom()); 
             } else {
                 alert("Se ha enviado un correo a " + email);
                 }
