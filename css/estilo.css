@@ -53,11 +53,15 @@ body {
     background-color: darkorange;
 }
 
-.article2 {
+.api {
     grid-area: article;
     background-color: gainsboro;
 }
 
+.form {
+    grid-area: article;
+    
+}
 .footer {
     grid-area: footer;
     background-color: dimgray;
@@ -115,6 +119,10 @@ body {
     width: 100%;
 }
 
+.form {
+    min-height: 60vh;
+    width: 100%;
+}
 .navbar {
     margin-top: 0;
     margin-left: 0;

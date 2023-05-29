@@ -23,28 +23,63 @@
         }
         }
 
-        function validarFormulario() {
-        var contraseña = document.getElementById("contraseña");
-        var confirmarContraseña = document.getElementById("confirmarContraseña");
+        function validarPassword() {
+            
+            var contraseña = document.getElementById("contraseña");
+            var confirmarContraseña = document.getElementById("confirmarContraseña");
+            
 
-        if (contraseña.value != confirmarContraseña.value) {
-            alert("Las contraseñas no coinciden. Por favor, inténtalo nuevamente.");
+            if (contraseña.value != confirmarContraseña.value) {
+                alert("Las contraseñas no coinciden. Por favor, inténtalo nuevamente.");
             return false;
-        }
+            }
+        
+            
         }
 
         function enviarFormulario() {
+        var checkbox = document.getElementById("checkboxClase");
         var email = document.getElementById("email").value;
         var materia = document.getElementById("materias").value;
         var fecha = document.getElementById("fecha").value;
-
-        alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha);
+        
+        if (validarPassword() == undefined) {
+            if (checkbox.checked) {
+                alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha); 
+            } else {
+                alert("Se ha enviado un correo a " + email);
+                }
         }
+        
+        // alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha);
+        }
+
+        function submit() {
+            var checkbox = document.getElementById("checkboxClase");
+            var email = document.getElementById("email").value;
+            var materia = document.getElementById("materias").value;
+            var fecha = document.getElementById("fecha").value;
+            var contraseña = document.getElementById("contraseña");
+            var confirmarContraseña = document.getElementById("confirmarContraseña");
+
+            if (contraseña.value != confirmarContraseña.value) {
+                alert("Las contraseñas no coinciden. Por favor, inténtalo nuevamente.");
+                return false;
+            } else if (checkbox.checked) {
+                alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha); 
+                } else {
+                    alert("Se ha enviado un correo a " + email);
+                    }
+            }
+                
+            
+
     </script>
 </head>
 <body>
   <h2>Formulario</h2>
-  <form onsubmit="return validarFormulario()">
+  <form onsubmit="return validarPassword()">
+
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" required><br>
 
@@ -79,7 +114,7 @@
       </select><br>
 
       <label for="fecha">Fecha:</label>
-      <input type="datetime-local" id="fecha" min="" max="" required><br>
+      <input type="datetime-local" id="fecha" min="" max=""><br>
       <!-- El atributo min y max pueden ser modificados dinámicamente a través de JavaScript para limitar la fecha y hora permitidas. -->
     </div>
 
