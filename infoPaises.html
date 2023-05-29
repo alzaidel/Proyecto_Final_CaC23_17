@@ -116,8 +116,8 @@
 
             var countryDetails = $('#country-details');
             countryDetails.empty();
-            countryDetails.append('<h2>' + country.translations.spa.common + '</h2>');
-            countryDetails.append('<p><strong>Nombre oficial:</strong> ' + country.translations.spa.official + '</p>');
+            countryDetails.append('<h2><br>' + country.translations.spa.common + '</h2>');
+            countryDetails.append('<p><br><strong>Nombre oficial:</strong> ' + country.translations.spa.official + '</p>');
             countryDetails.append('<p><strong>Región:</strong> ' + country.region + '</p>');
             countryDetails.append('<p><strong>Sub región:</strong> ' + country.subregion + '</p>');
             countryDetails.append('<p><strong>Capital:</strong> ' + country.capital + '</p>');
@@ -135,13 +135,20 @@
             countryDetails.append('<p><strong>Idiomas:</strong> ' + languagesString + '</p>');
             
             countryDetails.append('<p><strong>Gentilicio:</strong> ' + country.demonyms.eng.m + '</p>');
-             
+        
             // Agregar la imagen de la bandera
+            countryDetails.append('<p><br><br>Bandera de ' + country.translations.spa.common + '</p>');
+           
             var flagUrl = country.flags.png;
             countryDetails.append('<img src="' + flagUrl + '" alt="Bandera de ' + country.translations.spa.common + '" class="country-image">');
+           
             // Agregar la imagen del escudo
+            
+            countryDetails.append('<p><br><br>Escudo de ' + country.translations.spa.common + '<br><br></p>');
+         
             var flagUrl = country.coatOfArms.png;
             countryDetails.append('<img src="' + flagUrl + '" alt="Escudo de ' + country.translations.spa.common + '" class="country-image">');
+         
           
           },
           error: function() {
@@ -166,7 +173,7 @@
     <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi4.webp" alt="Imagen 4">
     </a></li>
   </ul>
-  <!-- Agrega más elementos según sea necesario -->
+
 </div>
 
 </body>

@@ -62,6 +62,19 @@ body {
     background-color: gainsboro;
 }
 
+.profes {
+    grid-area: article;
+    text-align: center;
+    background-color: gainsboro;
+    width: 100%;
+}
+
+.profes img {
+    max-width: 100%;
+    height: auto;
+}
+
+
 .form {
     grid-area: article;
     
