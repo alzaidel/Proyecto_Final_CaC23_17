@@ -2,72 +2,77 @@
 <html>
 <head>
   <title>Generador de Reuniones Jitsi</title>
-  <script src='https://meet.jit.si/external_api.js'></script>
-  <style>
-    #meet {
-      width: 700px;
-      height: 700px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Generador de Reuniones Jitsi</h1>
-  <button onclick="generarReunionJitsi()">Generar Reunión</button>
-  <div id="meet"></div>
 
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/estilo.css">
+  <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Clases on line</title>
+
+  <script src="https://meet.jit.si/external_api.js"></script>
   <script>
-    const domain = 'meet.jit.si';
+    function generarReunion() {
+      var nombre = document.getElementById("nombre").value;
+      var apellido = document.getElementById("apellido").value;
+      var sala = document.getElementById("sala").value;
 
-    // Generar reunión de Jitsi aleatoria con contraseña
-    function generarReunionJitsi() {
-      const roomName = generarSalaRandom();
-      const password = generarPasswordRandom();
-
-      const options = {
-        roomName: roomName,
-        width: 700,
-        height: 700,
-        parentNode: document.querySelector('#meet'),
-        configOverwrite: {
-          password: password
+      var domain = 'meet.jit.si';
+      var options = {
+        roomName: 'clasesonline/' + sala,
+        width: 800,
+        height: 600,
+        userInfo: {
+          displayName: nombre + ' ' + apellido
         },
-        interfaceConfigOverwrite: {
-          TOOLBAR_BUTTONS: ['microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen', 'fodeviceselection', 'hangup', 'profile', 'info', 'chat', 'recording', 'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand', 'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts', 'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'e2ee']
-        }
+        parentNode: document.getElementById('jitsi-container')
       };
 
-      const api = new JitsiMeetExternalAPI(domain, options);
-
-      // Mostrar datos de conexión en pantalla
-      const meetingInfo = `Sala: ${roomName}<br>Contraseña: ${password}`;
-      const meetingInfoElement = document.createElement('div');
-      meetingInfoElement.innerHTML = meetingInfo;
-      document.body.appendChild(meetingInfoElement);
-    }
-
-    // Generar nombre de sala aleatorio
-    function generarSalaRandom() {
-      // Lógica para generar un nombre de sala aleatorio
-      // Se puede personalizar esto según las necesidades
-      // Se genera un nombre de sala al azar con la fecha y hora actual
-      const date = new Date();
-      const timestamp = date.getTime();
-      const roomName = `room_${timestamp}`;
-      return roomName;
-    }
-
-    // Generar contraseña aleatoria
-    function generarPasswordRandom() {
-      // Lógica para generar una contraseña aleatoria
-      // Puedes personalizar esto según tus necesidades
-      // Aquí se genera una contraseña al azar con caracteres alfanuméricos
-      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      let password = '';
-      for (let i = 0; i < 8; i++) {
-        password += characters.charAt(Math.floor(Math.random() * characters.length));
-      }
-      return password;
+      var api = new JitsiMeetExternalAPI(domain, options);
     }
   </script>
+</head>
+
+<body>
+
+</head>
+
+<body class="grid-container"> 
+
+    <header class="header">
+        <h1>Titulo/nombre/lo que quieran</h1>
+        <br>
+        <h2>Aca tambien habria que hacerlo tipo un titulo estatico sobre un carrusel de imagenes</h2>
+    </header>
+    <nav class="navbar">
+        <li><a href="pagina2.html">Quiénes somos</a></li>
+        <li><a href="formulario.html">Inscripción</a></li>
+        <li><a href="videoJitsi.html">Sala Video</a></li>
+        <li><a href="infoPaises.html">Material Geografía</a></li>
+    </nav>
+  
+    <article class = "jitsi">
+        <h1>Acceso a Clases virtuales</h1>
+        <br>
+        <h2>Ingresá tu nombre y apellido, y el número de sala que recibiste por email para ingresar a la clase</h2>
+        <br><br>
+        <div class="jitsi"></div>
+        <form>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" required><br>
+          <br>
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" required><br>
+          <br>
+          <label for="sala">Número de Sala:</label>
+          <input type="text" id="sala" required><br>
+          <br>
+          <button type="button" onclick="generarReunion()">Acceder a la clase</button>
+        </form>
+        <div id="jitsi-container"></div>
+      </article>
+
 </body>
 </html>
