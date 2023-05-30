@@ -2,6 +2,9 @@
 <html>
 <head>
   <title>Geografía</title>
+
+  <!-- Usamos la API REST Countries --- https://restcountries.com -->
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
     .country-image {
@@ -106,7 +109,7 @@
 
     // Obtener la información del país seleccionado
     function getCountryInfo(countryName) {
-    //   if (countryName) {
+    
       if (countryName) {
         $.ajax({
           url: 'https://restcountries.com/v3.1/name/' + countryName + '?fullText=true',
@@ -122,14 +125,8 @@
             countryDetails.append('<p><strong>Sub región:</strong> ' + country.subregion + '</p>');
             countryDetails.append('<p><strong>Capital:</strong> ' + country.capital + '</p>');
             countryDetails.append('<p><strong>Códigos Monedas:</strong> ' + Object.keys(country.currencies) + '</p>');
-            // countryDetails.append('<p><strong>Monedas:</strong> ' + country.currencies.name + '</p>');
-            // Recorro todos los valores de las monedas 
-           /*  var currenciesNames = Object.values(country.currencies);
-            var currenciesString = currenciesNames.join(', ');
-            countryDetails.append('<p><strong>Monedas:</strong> ' + currenciesString + '</p>');
-             */
-            //countryDetails.append('<p><strong>Idiomas:</strong> ' + Object.keys(country.languages) + '</p>');
-            // Recorro todos los valores de los idiomas 
+
+            // Recorro todos los valores posibles de los idiomas 
             var languageNames = Object.values(country.languages);
             var languagesString = languageNames.join(', ');
             countryDetails.append('<p><strong>Idiomas:</strong> ' + languagesString + '</p>');
@@ -162,32 +159,32 @@
   </script>
 </article>
 
-<div class="carousel-frame">
-  <ul>
-    <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi1.webp" alt="Imagen 1">
-    </a></li>
-    <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi2.webp" alt="Imagen 2">
-    </a></li>
-    <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi3.webp" alt="Imagen 3">
-    </a></li>
-    <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi4.webp" alt="Imagen 4">
-    </a></li>
-  </ul>
+    <!-- Banner publicitario - animación Carrousel -->
 
-</div>
+    <div class="carousel-frame">
+      <ul>
+          <li><a href="https://www.mercadolibre.com.ar/ofertas" target="_blank"> <img src="imagenes/MeLi1.webp"
+                      alt="Imagen 1">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/ropa-y-accesorios" target="_blank"> <img src="imagenes/MeLi2.webp"
+                      alt="Imagen 2">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/celulares-y-telefonos" target="_blank"> <img src="imagenes/MeLi3.webp"
+                      alt="Imagen 3">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/belleza-y-cuidado-personal" target="_blank"> <img src="imagenes/MeLi4.webp"
+                      alt="Imagen 4">
+              </a></li>
+      </ul>
+      
+  </div>
 
 </body>
 
 <footer class="footer">
 
   
-  <!-- <div class="deslizarIzquierda">
-    <img src="imagenes/MeLi1.webp" width="100%" height=auto>
-    <img src="imagenes/MeLi2.webp" width="100%" height=auto>
-    <img src="imagenes/MeLi3.webp" width="100%" height=auto>
-    <img src="imagenes/MeLi4.webp" width="100%" height=auto>
-  </div> -->
-  <!-- <a href="https://www.mercadolibre.com.ar" target="_blank"><img src="imagenes/MeLi1.webp" width="100%" height=auto> -->
+
 
   <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-square bx-lg'></i></i></a>
   <a href="https://www.instagram.com/clases.online.arg/" target="_blank"><i class='bx bxl-instagram bx-lg' style='color:#c18d2c'></i></a>

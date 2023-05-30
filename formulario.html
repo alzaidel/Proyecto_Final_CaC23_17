@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +7,13 @@
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Inscripcion</title>
+    <title>Inscripción</title>
 
 
     <script>
+        
+        // Función que verifica el checkbox para mostrar la selección de la clase.
+
         function habilitarClase() {
         var checkbox = document.getElementById("checkboxClase");
         var seccionClase = document.getElementById("seccionClase");
@@ -36,7 +38,7 @@
         // Generar sala aleatoria
         function generarSalaRandom() {
 
-        // Se genera una sala al azar con 8 caracteres alfanuméricos
+        // Se genera un código de sala de jitsi al azar con 16 caracteres alfanuméricos
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let sala = '';
         for (let i = 0; i < 16; i++) {
@@ -51,6 +53,7 @@
         var materia = document.getElementById("materias").value;
         var fecha = document.getElementById("fecha").value;
     
+        // Función que verifica si el checkbox para agendar clase está tildado. En caso positivo, genera sala y envía información de conexión. En caso negativo, solo envía mail. Previamente, verifica si el password ingresado coincide con la confirmación
         if (validarPassword() == undefined) {
             if (checkbox.checked) {
                 
@@ -147,18 +150,21 @@
      </section>
     </section>
 
+
+    <!-- Banner publicitario - animación Carrousel -->
+
     <div class="carousel-frame">
         <ul>
-            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi1.webp"
+            <li><a href="https://www.mercadolibre.com.ar/ofertas" target="_blank"> <img src="imagenes/MeLi1.webp"
                         alt="Imagen 1">
                 </a></li>
-            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi2.webp"
+            <li><a href="https://www.mercadolibre.com.ar/c/ropa-y-accesorios" target="_blank"> <img src="imagenes/MeLi2.webp"
                         alt="Imagen 2">
                 </a></li>
-            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi3.webp"
+            <li><a href="https://www.mercadolibre.com.ar/c/celulares-y-telefonos" target="_blank"> <img src="imagenes/MeLi3.webp"
                         alt="Imagen 3">
                 </a></li>
-            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi4.webp"
+            <li><a href="https://www.mercadolibre.com.ar/c/belleza-y-cuidado-personal" target="_blank"> <img src="imagenes/MeLi4.webp"
                         alt="Imagen 4">
                 </a></li>
         </ul>
