@@ -83,25 +83,30 @@
         </nav>
     </div>
 
-    <section>
+    <!-- <section> -->
         
-        <h3>Formulario de Inscripción</h3><br>
+        
         <div class="form">
+
+        <h3>Formulario de Inscripción</h3><br>
+        
         <!-- <form action="" method="get"> -->
-        <form onsubmit="return validarPassword()"></form>
+        
+            <form onsubmit="return validarPassword()"></form>
         <p>
-            <label for="name">Nombre: <input type="text" name="nombre" id="name" required></label>
+            <!-- <label for="name">Nombre: </label> -->
+                <input type="text" name="nombre" id="name" placeholder="Nombre" required>
                     </p>
         <p><br>
         
             <p>
-            <label for="apellido">Apellido: <input type="text" name="apellido" id="apellido" required></label>
+            <!-- <label for="apellido">Apellido: </label> -->
+                <input type="text" name="apellido" id="apellido" placeholder="Apellido" required>
                     </p>
         <p><br>
-            <!-- <label for="edad">Fecha de Nacimiento: <input type="date" name="mes" id="edad" required></label>
-                    </p>
-        <p><br> -->
-            <label for="dni">DNI N°: <input type="number" name="documento" id="dni" required></label>
+         
+            <!-- <label for="dni">DNI N°: </label> -->
+                <input type="number" name="documento" id="dni" placeholder="Ingrese su DNI"required>
                     </p>
         <p><br>
            <!--  <label for="clase">Materia: <input type="text" name="materia" id="clase"></label>
@@ -109,18 +114,22 @@
                 <p>
         
         <p>             
-            <label for="email">Email:</label> <input type="email" id="email" required>
+            <!-- <label for="email">Email:</label>  -->
+            <input type="email" id="email" placeholder="Ingrese su e-mail" required>
             
         </p><br>
               
             
-            <label for="Usu">Nombre de Usuario: <input type="text" name="Usuario" id="Usu" required></label>
+            <!-- <label for="Usu">Nombre de Usuario: </label> -->
+            <input type="text" name="Usuario" id="Usu" placeholder="Nombre de Usuario" required>
         </p><br>
         <p>
-            <label for="pass">Contraseña: <input type="password" name="pass" id="pass" required></label>
+            <!-- <label for="pass">Contraseña: </label> -->
+            <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
         </p><br>
         <p>
-            <label for="pass">Confirmar contraseña: <input type="password" name="passConfirma" id="passConfirma" required></label>
+            <!-- <label for="pass">Confirmar contraseña: </label> -->
+            <input type="password" name="passConfirma" id="passConfirma" placeholder="Confirma contraseña" required>
         </p><br>
         
         <label for="checkboxClase">Agendar una clase:</label>
@@ -150,8 +159,8 @@
         </p>
     </form>
 </div>
-     </section>
-    </section>
+     <!-- </section>
+    </section> -->
 
 
     <!-- Banner publicitario - animación Carrousel -->

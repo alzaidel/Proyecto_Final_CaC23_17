@@ -22,6 +22,14 @@
       var apellido = document.getElementById("apellido").value;
       var sala = document.getElementById("sala").value;
 
+      // Ocultar el formulario
+      var formulario = document.getElementById("formulario");
+      formulario.style.display = "none";
+
+      // Mostrar el contenedor de Jitsi
+      var jitsiContainer = document.getElementById("jitsi-container");
+      jitsiContainer.style.display = "block";
+
       var domain = 'meet.jit.si';
       var options = {
         roomName: 'clasesonline/' + sala,
@@ -30,7 +38,7 @@
         userInfo: {
           displayName: nombre + ' ' + apellido
         },
-        parentNode: document.getElementById('jitsi-container')
+        
       };
 
       var api = new JitsiMeetExternalAPI(domain, options);
@@ -54,22 +62,23 @@
         <li><a href="infoPaises.html">Material Geografía</a></li>
     </nav>
   </div>
-  
+
     <article class = "jitsi">
         <h1>Acceso a Clases virtuales</h1>
         <br>
-        <p><strong>Ingresá tu nombre y apellido, y el número de sala que recibiste por email para ingresar a la clase</strong></p>
-        <br><br>
-        <div class="jitsi"></div>
-        <form>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" required><br>
+        <form id="formulario">
+          <p><strong>Para acceder a la clase, ingresá tu nombre y apellido, y el número de sala que recibiste al registrarte:</strong></p>
+          
+          <div class="jitsi"></div>
+        
+          <!-- <label for="nombre">Nombre:</label> -->
+          <input type="text" id="nombre" placeholder="Nombre" required><br>
           <br>
-          <label for="apellido">Apellido:</label>
-          <input type="text" id="apellido" required><br>
+          <!-- <label for="apellido">Apellido:</label> -->
+          <input type="text" id="apellido" placeholder="Apellido" required><br>
           <br>
-          <label for="sala">Número de Sala:</label>
-          <input type="text" id="sala" required><br>
+          <!-- <label for="sala">Número de Sala:</label> -->
+          <input type="text" id="sala" placeholder="Número de sala" required><br>
           <br>
           <button type="button" onclick="generarReunion()">Acceder a la clase</button>
         </form>
