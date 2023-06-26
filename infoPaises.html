@@ -109,6 +109,9 @@
 
     // Obtener la información del país seleccionado
     function getCountryInfo(countryName) {
+      var countryDetails = document.getElementById('country-details');
+      countryDetails.innerHTML = '';
+      
       if (countryName) {
         fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
           .then(response => response.json())
@@ -117,6 +120,7 @@
 
             const countryDetails = document.getElementById('country-details');
             
+            countryDetails.innerHTML += '';
             countryDetails.innerHTML += `<h2><br>${country.translations.spa.common}</h2>`;
             countryDetails.innerHTML += `<p><br><strong>Nombre oficial:</strong> ${country.translations.spa.official}</p>`;
             countryDetails.innerHTML += `<p><strong>Región:</strong> ${country.region}</p>`;
