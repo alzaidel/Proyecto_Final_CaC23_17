@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Inscripcion</title>
+
+
+    <script>
+        function habilitarClase() {
+        var checkbox = document.getElementById("checkboxClase");
+        var seccionClase = document.getElementById("seccionClase");
+    
+        if (checkbox.checked) {
+            seccionClase.style.display = "block";
+        } else {
+            seccionClase.style.display = "none";
+        }
+        }
+    
+        function validarPassword() {
+        var pass = document.getElementById("pass");
+        var passConfirm = document.getElementById("passConfirma");
+    
+        if (pass.value != passConfirma.value) {
+            alert("Las contraseñas no coinciden. Por favor, intentalo nuevamente.");
+            return false;
+        }
+        }
+        
+        // Generar sala aleatoria
+        function generarSalaRandom() {
+
+        // Se genera una sala al azar con 8 caracteres alfanuméricos
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let sala = '';
+        for (let i = 0; i < 16; i++) {
+            sala += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return sala;
+        }
+
+        function enviarFormulario() {
+        var checkbox = document.getElementById("checkboxClase");
+        var email = document.getElementById("email").value;
+        var materia = document.getElementById("materias").value;
+        var fecha = document.getElementById("fecha").value;
+    
+        if (validarPassword() == undefined) {
+            if (checkbox.checked) {
+                
+                alert("Se ha enviado un correo a " + email + ". Clase de " + materia + " agendada para el " + fecha + " --- Número de sala: " + generarSalaRandom()); 
+            } else {
+                alert("Se ha enviado un correo a " + email);
+                }
+        }
+        
+        }
+      </script>
+</head>
+
+<body>
+    <header class="header">
+        <h1>Clases On Line</h1>
+        <br>
+        <h2>A tu ritmo</h2>
+    </header>
+    <nav class="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quienesSomos.html">Quiénes somos</a></li>
+        <li><a href="videoJitsi.html">Sala Video</a></li>
+        <li><a href="infoPaises.html">Material Geografía</a></li>
+    </nav>
+
+    <section>
+        
+        
+        <h3>Formulario de Inscripción</h3><br>
+        <div class="form"></div>
+        <!-- <form action="" method="get"> -->
+        <form onsubmit="return validarPassword()"></form>
+        <p>
+            <label for="name">Nombre: <input type="text" name="nombre" id="name" required></label>
+                    </p>
+        <p><br>
+        
+            <p>
+            <label for="apellido">Apellido: <input type="text" name="apellido" id="apellido" required></label>
+                    </p>
+        <p><br>
+            <!-- <label for="edad">Fecha de Nacimiento: <input type="date" name="mes" id="edad" required></label>
+                    </p>
+        <p><br> -->
+            <label for="dni">DNI N°: <input type="number" name="documento" id="dni" required></label>
+                    </p>
+        <p><br>
+           <!--  <label for="clase">Materia: <input type="text" name="materia" id="clase"></label>
+                    </p><br> -->
+                <p>
+        
+        <p>             
+            <label for="email">Email:</label> <input type="email" id="email" required>
+            
+        </p><br>
+              
+            
+            <label for="Usu">Nombre de Usuario: <input type="text" name="Usuario" id="Usu" required></label>
+        </p><br>
+        <p>
+            <label for="pass">Contraseña: <input type="password" name="pass" id="pass" required></label>
+        </p><br>
+        <p>
+            <label for="pass">Confirmar contraseña: <input type="password" name="passConfirma" id="passConfirma" required></label>
+        </p><br>
+        
+        <label for="checkboxClase">Agendar una clase:</label>
+    <input type="checkbox" id="checkboxClase" onchange="habilitarClase()"><br>
+    <br>
+
+    <div id="seccionClase" style="display: none;">
+      <label for="materias">Materias:</label>
+      <select id="materias">
+        <option value="Matemática">Matemática</option>
+        <option value="Lengua">Lengua</option>
+        <option value="Geografía">Geografía</option>
+        <option value="Física">Física</option>
+        <option value="Química">Química</option>
+        <option value="Inglés">Inglés</option>
+        <option value="Historia">Historia</option>
+      </select><br>
+      <br>
+
+      <label for="fecha">Fecha:</label>
+      <input type="datetime-local" id="fecha" min="" max=""><br> <br>
+    
+    </div>
+
+        <p>
+            <input type="submit" value="Enviar" onclick="enviarFormulario()">
+        </p>
+    </form>
+</div>
+     </section>
+    </section>
+
+    <div class="carousel-frame">
+        <ul>
+            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi1.webp"
+                        alt="Imagen 1">
+                </a></li>
+            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi2.webp"
+                        alt="Imagen 2">
+                </a></li>
+            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi3.webp"
+                        alt="Imagen 3">
+                </a></li>
+            <li><a href="https://www.mercadolibre.com.ar" target="_blank"> <img src="imagenes/MeLi4.webp"
+                        alt="Imagen 4">
+                </a></li>
+        </ul>
+        
+    </div>
+
+    <footer class="footer">
+        <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-square bx-lg'></i></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class='bx bxl-instagram bx-lg' style='color:#c18d2c'></i></a>
+        <a href="https://wa.me/5491150459292?text=%C2%A1Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20las%20clases%20online" target="_blank"><i class='bx bxl-whatsapp bx-lg' style='color:#16d41b'></i></a>
+        <a href="https://www.discord.com" target="_blank"><i class='bx bxl-discord-alt bx-lg' style='color:#161dd4'></i></a>
+        <br>
+        Todos los derechos reservados
+    </footer>
+</body>
+
+
+</html>

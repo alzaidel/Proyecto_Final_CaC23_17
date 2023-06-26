@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generador de Reuniones Jitsi</title>
+  <script src='https://meet.jit.si/external_api.js'></script>
+  <style>
+    #meet {
+      width: 700px;
+      height: 700px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generador de Reuniones Jitsi</h1>
+  <button onclick="generarReunionJitsi()">Generar Reunión</button>
+  <div id="meet"></div>
+
+  <script>
+    const domain = 'meet.jit.si';
+
+    // Generar reunión de Jitsi aleatoria con contraseña
+    function generarReunionJitsi() {
+      const roomName = generarSalaRandom();
+      const password = generarPasswordRandom();
+
+      const options = {
+        roomName: roomName,
+        width: 700,
+        height: 700,
+        parentNode: document.querySelector('#meet'),
+        configOverwrite: {
+          password: password
+        },
+        interfaceConfigOverwrite: {
+          TOOLBAR_BUTTONS: ['microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen', 'fodeviceselection', 'hangup', 'profile', 'info', 'chat', 'recording', 'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand', 'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts', 'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'e2ee']
+        }
+      };
+
+      const api = new JitsiMeetExternalAPI(domain, options);
+
+      // Mostrar datos de conexión en pantalla
+      const meetingInfo = `Sala: ${roomName}<br>Contraseña: ${password}`;
+      const meetingInfoElement = document.createElement('div');
+      meetingInfoElement.innerHTML = meetingInfo;
+      document.body.appendChild(meetingInfoElement);
+    }
+
+    // Generar nombre de sala aleatorio
+    function generarSalaRandom() {
+      // Lógica para generar un nombre de sala aleatorio
+      // Se puede personalizar esto según las necesidades
+      // Se genera un nombre de sala al azar con la fecha y hora actual
+      const date = new Date();
+      const timestamp = date.getTime();
+      const roomName = `room_${timestamp}`;
+      return roomName;
+    }
+
+    // Generar contraseña aleatoria
+    function generarPasswordRandom() {
+      // Lógica para generar una contraseña aleatoria
+      // Puedes personalizar esto según tus necesidades
+      // Aquí se genera una contraseña al azar con caracteres alfanuméricos
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let password = '';
+      for (let i = 0; i < 8; i++) {
+        password += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return password;
+    }
+  </script>
+</body>
+</html>

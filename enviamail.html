@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enviar correo electrónico</title>
+</head>
+<body>
+    <h1>Enviar correo electrónico</h1>
+    <form method="post" action="enviar_email.php">
+        <label for="destinatario">Destinatario:</label>
+        <input type="email" name="destinatario" id="destinatario" required>
+        <br>
+        <label for="asunto">Asunto:</label>
+        <input type="text" name="asunto" id="asunto" required>
+        <br>
+        <label for="cuerpo">Cuerpo:</label>
+        <textarea name="cuerpo" id="cuerpo" required></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

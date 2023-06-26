@@ -8,8 +8,7 @@
 
 html {
     height: 100%;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-    font-family: Arial, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -35,7 +34,6 @@ body {
     background-image: url("para banner.jpg");
     text-align: center;
     
-    
 }
 
 .consola {
@@ -46,17 +44,7 @@ body {
 .navbar {
     grid-area: navbar;
     background-color: cornflowerblue;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: left; */
-    }
-
-    .navbar li {
-        display: flex;
-        flex-direction: column;
-        justify-content: left;
-        align-items: flex-start;
-        }
+}
 
 .aside {
     grid-area: aside;
@@ -66,8 +54,7 @@ body {
 
 .article {
     grid-area: article;
-    background-color: rgb(227, 237, 241);
-    text-align: justify;
+    background-color: darkorange;
 }
 
 .api {
@@ -87,11 +74,9 @@ body {
     height: auto;
 }
 
-
 .form {
     grid-area: article;
-   
-    
+
 }
 
 .jitsi {
@@ -104,51 +89,29 @@ body {
     background-color: dimgray;
 }
 
-.country-image {
-    height: 200px;
-}
-
-
-@media (min-width:900px) {
+@media(min-width:900px) {
     .grid-container {
         grid-template-columns: auto;
         grid-template-rows: auto;
         grid-template-areas: auto;
         grid-template:
-            "header header header" 100px
-            "navbar navbar navbar"
+            "navbar header header" 100px
             "aside aside article"
             "footer footer footer" 100px/
             200px auto;
     }
-
-    .navbar {
-        grid-area: navbar;
-        background-color: cornflowerblue;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content:space-around;
-        }
-
-    .navbar li {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        }
-    }
+}
 
 .header {
     width: 100%;
     height: 100%;
-    /* animation-name: cambiarcolor1;
-    animation-name: aparecer; */
+    animation-name: cambiarcolor1;
+    animation-name: aparecer;
     animation-duration: 3s;
     animation-iteration-count: 2;
 }
 
-/* @keyframes cambiarcolor1 {
+@keyframes cambiarcolor1 {
     0% {
         background-color: bisque;
     }
@@ -160,13 +123,13 @@ body {
     100% {
         background-color: white;
     }
-} */
+}
 
-/* @keyframes aparecer {
+@keyframes aparecer {
     0% {
         rotate: 45deg;
     }
-} */
+}
 
 .article {
     height: 100%;
@@ -182,8 +145,7 @@ body {
     min-height: 60vh;
     width: 100%;
 }
-/* .navbar {
-    padding-left: 8px;
+.navbar {
     margin-top: 0;
     margin-left: 0;
     background: rgb(240, 241, 132);
@@ -193,24 +155,24 @@ body {
     animation-name: cambiarColor;
     animation-duration: 5s;
     animation-iteration-count: 1;
-    text-align: left;
-} */
 
-/* @keyframes cambiarColor {
+}
+
+@keyframes cambiarColor {
     0% {
-        background-color: rgb(7, 226, 7);
+        background-color: darkgreen;
         transform: scale(1);
         transform: translate(500px);
     }
 
     50% {
-        background-color: rgb(168, 240, 109);
+        background-color: rgb(238, 234, 12);
     }
 
     100% {
-        background: rgb(150, 199, 121);
+        background: red;
         }
-} */
+}
 
 .aside {
     margin-top: 0;
@@ -222,12 +184,12 @@ body {
     animation-iteration-count: 1;
 }
 
-/* @keyframes expandir {
+@keyframes expandir {
     0% {
         transform: scale(2);
 
     }
-} */
+}
 
 
 .carousel-frame {
