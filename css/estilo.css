@@ -8,9 +8,6 @@
 
 html {
     height: 100%;
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-    /* font-family: 'Yanone Kaffeesatz', sans-serif; */
-    /* font-family: Arial, sans-serif; */
 }
 
 body {
@@ -55,7 +52,8 @@ body {
 .navbar-container {
     grid-area: navbar;
     background-color: #000000; 
-    padding: 10px; 
+    padding: 10px;
+    margin-bottom: 30px;
   }
  
 .navbar {
@@ -110,7 +108,7 @@ body {
 }
 
 .parrafo {
-    background-color: #160e57; /* Color de fondo */
+    background-color: #0c053dd7; /* Color de fondo */
     border-radius: 15px; /* Radio de las esquinas redondeadas */
     padding: 10px; /* Espacio interno dentro del fondo */
     margin-bottom: 30px;
@@ -138,13 +136,33 @@ body {
 
 .api {
     grid-area: article;
-    background-color: gainsboro;
-}
+    background-color: #398e91e5;
+    text-align: justify;
+    border-radius: 10px;
+    padding: 20px;
+    
+    }
+
+/* Estilos personalizados para el select */
+.select-estilo {
+    appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    color: #333333;
+  }
+  
+  .select-estilo:focus {
+    outline: none;
+    box-shadow: 0 0 4px #888888;
+  }
 
 .profes {
     grid-area: article;
     text-align: center;
-    background-color: gainsboro;
+    background-color: #edeeff;
     width: 100%;
 }
 
@@ -369,19 +387,19 @@ form input {
     animation-iteration-count: 1;
 }
 
-/* @keyframes expandir {
+@keyframes expandir {
     0% {
-        transform: scale(2);
+        transform: scale(0.5);
 
     }
-} */
+}
 
 
 .carousel-frame {
     width: 100%;
     height: auto;
     overflow: hidden;
-
+    margin-top: 20px;
 }
 
 .carousel-frame ul {

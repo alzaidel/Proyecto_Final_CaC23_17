@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geografía</title>
+
+  <!-- Usamos la API REST Countries --- https://restcountries.com -->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/estilo.css">
+   <link rel="shortcut icon" href="iconos/Teacher_Outline.ico" type="image/x-icon">
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+<header class="header">
+    <h1>Geografía</h1>
+    <br>
+    <h2>Países del mundo</h2>
+</header>
+<div class="navbar-container">
+  <nav class="navbar">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="quienesSomos.html">Quiénes somos</a></li>
+    <li><a href="formulario.html">Inscripción</a></li>
+    <li><a href="videoJitsi.html">Sala Video</a></li>
+  </nav>
+</div>
+
+<article class="api">
+
+  <h1>Información de Países</h1>
+  
+  <!-- Select para elegir una región -->
+  <select id="region-select" onchange="filterCountries()">
+    <option value="">Seleccione una región</option>
+    <option value="Americas">Américas</option>
+    <option value="Europe">Europa</option>
+    <option value="Africa">África</option>
+    <option value="Asia">Asia</option>
+    <option value="Oceania">Oceanía</option>
+  </select>
+  
+  <!-- Select para elegir un país -->
+  <select id="country-select" onchange="getCountryInfo(this.value)">
+    <option value="">Seleccione un país</option>
+  </select>
+
+  <!-- Div para mostrar los detalles del país seleccionado -->
+  <div id="country-details"></div>
+
+  <script>
+    // Obtener la lista de países al cargar la página
+    $(document).ready(function() {
+      $.ajax({
+        url: 'https://restcountries.com/v3.1/all',
+        method: 'GET',
+        success: function(data) {
+          var select = $('#country-select');
+          $.each(data, function(index, country) {
+            select.append($('<option></option>').val(country.name.common).text(country.translations.spa.common));
+          });
+
+          // Ordenar la lista desplegable alfabéticamente
+          select.html(select.find('option').sort(function(a, b) {
+            return a.text.toUpperCase().localeCompare(b.text.toUpperCase());
+          }));
+        },
+        error: function() {
+          alert('Error al cargar la lista de países');
+        }
+      });
+    });
+
+    // Filtrar países según la región seleccionada
+    function filterCountries() {
+      var region = $('#region-select').val();
+      var countrySelect = $('#country-select');
+      countrySelect.empty();
+
+      if (region) {
+        $.ajax({
+          url: 'https://restcountries.com/v3.1/region/' + region,
+          method: 'GET',
+          success: function(data) {
+            var select = $('#country-select');
+            select.append($('<option></option>').val('').text('Seleccione un país'));
+            $.each(data, function(index, country) {
+              select.append($('<option></option>').val(country.name.common).text(country.translations.spa.common));
+            });
+
+            // Ordenar la lista desplegable alfabéticamente
+            select.html(select.find('option').sort(function(a, b) {
+              return a.text.toUpperCase().localeCompare(b.text.toUpperCase());
+            }));
+          },
+          error: function() {
+            alert('Error al obtener la lista de países por región');
+          }
+        });
+      }
+    }
+
+    // Obtener la información del país seleccionado
+    function getCountryInfo(countryName) {
+    
+      if (countryName) {
+        $.ajax({
+          url: 'https://restcountries.com/v3.1/name/' + countryName + '?fullText=true',
+          method: 'GET',
+          success: function(data) {
+            var country = data[0];
+
+            var countryDetails = $('#country-details');
+            countryDetails.empty();
+            countryDetails.append('<h2><br>' + country.translations.spa.common + '</h2>');
+            countryDetails.append('<p><br><strong>Nombre oficial:</strong> ' + country.translations.spa.official + '</p>');
+            countryDetails.append('<p><strong>Región:</strong> ' + country.region + '</p>');
+            countryDetails.append('<p><strong>Sub región:</strong> ' + country.subregion + '</p>');
+            countryDetails.append('<p><strong>Capital:</strong> ' + country.capital + '</p>');
+            countryDetails.append('<p><strong>Códigos Monedas:</strong> ' + Object.keys(country.currencies) + '</p>');
+
+            // Recorro todos los valores posibles de los idiomas 
+            var languageNames = Object.values(country.languages);
+            var languagesString = languageNames.join(', ');
+            countryDetails.append('<p><strong>Idiomas:</strong> ' + languagesString + '</p>');
+            
+            countryDetails.append('<p><strong>Gentilicio:</strong> ' + country.demonyms.eng.m + '</p>');
+        
+            // Agregar la imagen de la bandera
+            countryDetails.append('<p><br><br>Bandera de ' + country.translations.spa.common + '</p>');
+           
+            var flagUrl = country.flags.png;
+            countryDetails.append('<img src="' + flagUrl + '" alt="Bandera de ' + country.translations.spa.common + '" class="country-image">');
+           
+            // Agregar la imagen del escudo
+            
+            countryDetails.append('<p><br><br>Escudo de ' + country.translations.spa.common + '<br><br></p>');
+         
+            var flagUrl = country.coatOfArms.png;
+            countryDetails.append('<img src="' + flagUrl + '" alt="Escudo de ' + country.translations.spa.common + '" class="country-image">');
+         
+          
+          },
+          error: function() {
+            alert('Error al obtener la información del país');
+          }
+        });
+      } else {
+        $('#country-details').empty();
+      }
+    }
+  </script>
+</article>
+
+    <!-- Banner publicitario - animación Carrousel -->
+
+    <div class="carousel-frame">
+      <ul>
+          <li><a href="https://www.mercadolibre.com.ar/ofertas" target="_blank"> <img src="imagenes/MeLi1.webp"
+                      alt="Imagen 1">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/ropa-y-accesorios" target="_blank"> <img src="imagenes/MeLi2.webp"
+                      alt="Imagen 2">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/celulares-y-telefonos" target="_blank"> <img src="imagenes/MeLi3.webp"
+                      alt="Imagen 3">
+              </a></li>
+          <li><a href="https://www.mercadolibre.com.ar/c/belleza-y-cuidado-personal" target="_blank"> <img src="imagenes/MeLi4.webp"
+                      alt="Imagen 4">
+              </a></li>
+      </ul>
+      
+  </div>
+
+</body>
+
+<footer class="footer">
+
+  
+
+
+  <a href="https://www.facebook.com" target="_blank"><i class='bx bxl-facebook-square bx-lg'></i></i></a>
+  <a href="https://www.instagram.com/clases.online.arg/" target="_blank"><i class='bx bxl-instagram bx-lg' style='color:#c18d2c'></i></a>
+  <a href="https://wa.me/5491150459292?text=%C2%A1Hola!%20Quiero%20saber%20m%C3%A1s%20sobre%20las%20clases%20online" target="_blank"><i class='bx bxl-whatsapp bx-lg' style='color:#16d41b'></i></a>
+  <a href="https://www.discord.com" target="_blank"><i class='bx bxl-discord-alt bx-lg' style='color:#161dd4'></i></a>
+  <br>
+  Todos los derechos reservados
+</footer>
+
+
+</html>

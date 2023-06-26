@@ -24,14 +24,23 @@
             seccionClase.style.display = "none";
         }
         }
-    
+        
+        // Función que valida que el password se haya escrito igual ambas veces, y que el mismo tenga al menos 8 caracteres incluyendo un número.
+
         function validarPassword() {
         var pass = document.getElementById("pass");
         var passConfirm = document.getElementById("passConfirma");
+
+        var regex = /^(?=.*\d).{8,}$/;
     
         if (pass.value != passConfirma.value) {
             alert("Las contraseñas no coinciden. Por favor, intentalo nuevamente.");
             return false;
+        }
+
+        if (!regex.test(pass.value)) {
+        alert("La contraseña debe tener al menos 8 caracteres y contener al menos un número.");
+        return false;
         }
         }
         
